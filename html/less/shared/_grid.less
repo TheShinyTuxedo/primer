@@ -1,0 +1,81 @@
+@columns: 12;
+
+.row {
+    .cf;
+    margin-left: -@spacing / 2;
+    margin-right: -@spacing / 2;
+}
+
+.col {
+    float: left;
+    width: 100%;
+    padding-left: @spacing / 2;
+    padding-right: @spacing / 2;
+}
+
+.row--tiny {
+    margin-left: -5px !important;
+    margin-right: -5px !important;
+
+    .col {
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+    }
+}
+
+.media-medium() {
+    .row {
+        margin-left: -@spacing;
+        margin-right: -@spacing;
+    }
+
+    .col {
+        padding-left: @spacing;
+        padding-right: @spacing;
+    }
+}
+
+.createColumn(@index) when (@index > 0) {
+    // create class
+    .col--@{index}of@{columns} {
+        width: 100% / @columns * @index;
+    }
+
+    // next iteration
+    .createColumn(@index - 1);
+}
+
+.createColumn(@index, @media) when (@index > 0) {
+    // create class
+    .col--@{index}of@{columns}@{media} {
+        width: 100% / @columns * @index;
+    }
+
+    // next iteration
+    .createColumn(@index - 1, @media);
+}
+
+.createColumn(0) {}
+
+// call looping mixin
+.createColumn(@columns);
+
+.media-small() {
+    .createColumn(@columns, -s);
+}
+
+.media-small-medium() {
+    .createColumn(@columns, -sm);
+}
+
+.media-medium() {
+    .createColumn(@columns, -m);
+}
+
+.media-medium-large() {
+    .createColumn(@columns, -ml);
+}
+
+.media-large() {
+    .createColumn(@columns, -l);
+}
