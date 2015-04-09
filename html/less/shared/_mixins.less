@@ -1,5 +1,3 @@
-//
-
 // animations
 // ----------
 
@@ -378,27 +376,6 @@
     -ms-flex-order: @order;
     -webkit-order: @order;
     order: @order;
-}
-
-
-// inline block
-// ------------
-
-.ib {
-    display: -moz-inline-stack;
-    display: inline-block;
-    zoom: 1;
-    *display: inline;
-}
-
-
-// fonts
-// -----
-
-.font-size(@font-size: 16) {
-    @rem: (@font-size / 16);
-    font-size: @font-size * 1px;
-    font-size: ~"@{rem}rem";
 }
 
 // [none, antialiased, subpixel-antialiased]

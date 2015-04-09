@@ -1,18 +1,5 @@
 var utils = (function ($) {
-    var $window = $(window),
-        $document = $(document),
-        $body = $('body');
-
-    function limitScroll(event, $boundary) {
-        var scroll = $window.scrollTop(),
-            max = $boundary.outerHeight() - $window.height();
-
-        if (scroll < 0) {
-            $document.scrollTop(0);
-        } else if (scroll > max) {
-            $document.scrollTop(max);
-        }
-    }
+    var $window = $(window);
 
     function isMobile() {
         return $window.width() < (40 * 16) || /Android|webOS|iPhone|iPod|iPad|BlackBerry|IEMobile/i.test(navigator.userAgent);
@@ -30,11 +17,6 @@ var utils = (function ($) {
 
     return {
         createNodes: createNodes,
-        isMobile: isMobile,
-        limitScroll: function ($boundary) {
-            $window.on('scroll', function (event) {
-                limitScroll(event, $boundary);
-            });
-        }
+        isMobile: isMobile
     }
 })(jQuery);

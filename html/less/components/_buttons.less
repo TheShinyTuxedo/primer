@@ -1,75 +1,25 @@
 .button {
     display: inline-block;
     vertical-align: middle;
-    padding: 0.875em @spacing * 2;
-    border: 0.09em solid transparent;
-    .border-radius(3.125em);
+    margin: 0;
+    padding: @spacing @spacing * 2;
+    background: #fff;
+    border: none;
+    .border-radius(0);
     outline: none;
+    .no-tap-highlight();
     -webkit-appearance: none;
-    font-family: @body-font;
-    font-weight: @bold-weight;
-    line-height: 2em;
+    font-family: inherit;
+    font-weight: inherit;
+    line-height: inherit;
     text-decoration: none;
-    text-transform: uppercase;
+    color: inherit;
     .font-smoothing;
     text-align: center;
     cursor: pointer;
     .transition(all 0.2s ease);
-    .no-tap-highlight();
-    color: inherit;
 
-    &.active,
     &:hover {
-        background-color: @primary;
-    }
-
-    + .button {
-        margin-left: 3px;
-    }
-}
-
-.button--secondary {
-    border-color: transparent;
-    background-color: transparent;
-
-    &.active,
-    &:hover {
-        background-color: transparent;
-        border-color: inherit;
-    }
-}
-
-.button--large {
-    font-size: 2em;
-}
-
-.button--icon {
-    width: 2.7em;
-    height: 2.7em;
-    line-height: 2.7em;
-    padding: 0 !important;
-
-    [class^="icon-"] {
-        font-size: 1.4em;
-
-        &:before {
-            line-height: inherit !important;
-        }
-    }
-}
-
-
-// app store button
-
-.app-store {
-    display: inline-block;
-    height: 2.7em;
-
-    svg {
-        height: 100%;
-    }
-
-    path {
-        // fill: currentColor;
+        background-color: #ccc;
     }
 }

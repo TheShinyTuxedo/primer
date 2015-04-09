@@ -13,13 +13,33 @@
     padding-right: @spacing / 2;
 }
 
-.row--tiny {
-    margin-left: -5px !important;
-    margin-right: -5px !important;
+.row--med {
+    margin-left: -@spacing;
+    margin-right: -@spacing;
 
     .col {
-        padding-left: 5px !important;
-        padding-right: 5px !important;
+        padding-left: @spacing;
+        padding-right: @spacing;
+    }
+}
+
+.row--lge {
+    margin-left: -@spacing * 2;
+    margin-right: -@spacing * 2;
+
+    .col {
+        padding-left: @spacing * 2;
+        padding-right: @spacing * 2;
+    }
+}
+
+.row--flush {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+
+    .col {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
     }
 }
 
@@ -33,7 +53,30 @@
         padding-left: @spacing;
         padding-right: @spacing;
     }
+
+    .row--med {
+        margin-left: -@spacing * 2;
+        margin-right: -@spacing * 2;
+
+        .col {
+            padding-left: @spacing * 2;
+            padding-right: @spacing * 2;
+        }
+    }
+
+    .row--lge {
+        margin-left: -@spacing * 3;
+        margin-right: -@spacing * 3;
+
+        .col {
+            padding-left: @spacing * 3;
+            padding-right: @spacing * 3;
+        }
+    }
 }
+
+
+// column generators
 
 .createColumn(@index) when (@index > 0) {
     // create class
