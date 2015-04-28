@@ -170,16 +170,6 @@
         background-image: linear-gradient(to bottom, @start, @end);
     }
 
-    .horizontal(@start: #fff, @end: #ddd) {
-        background-color: average(@start, @end);
-        background-image: -webkit-gradient(linear, top left, top right, from(@start), to(@end));
-        background-image: -webkit-linear-gradient(left, @start, @end);
-        background-image: -moz-linear-gradient(left, @start, @end);
-        background-image: -o-linear-gradient(left, @start, @end);
-        background-image: -ms-linear-gradient(left, @start, @end);
-        background-image: linear-gradient(to right, @start, @end);
-    }
-
     .horizontal(@start: #fff, @middle: #eee, @end: #ddd) {
         background-color: average(@start, @end);
         background-image: -webkit-gradient(linear, top left, top right, color-stop(0%, @start), color-stop(50%, @middle), color-stop(100%, @end));
@@ -188,6 +178,16 @@
         background-image: -o-linear-gradient(left, @start 0%, @middle 50%, @end 100%);
         background-image: -ms-linear-gradient(left, @start 0%, @middle 50%, @end 100%);
         background-image: linear-gradient(to right, @start 0%, @middle 50%, @end 100%);
+    }
+
+    .horizontal(@start: #fff, @end: #ddd) {
+        background-color: average(@start, @end);
+        background-image: -webkit-gradient(linear, top left, top right, from(@start), to(@end));
+        background-image: -webkit-linear-gradient(left, @start, @end);
+        background-image: -moz-linear-gradient(left, @start, @end);
+        background-image: -o-linear-gradient(left, @start, @end);
+        background-image: -ms-linear-gradient(left, @start, @end);
+        background-image: linear-gradient(to right, @start, @end);
     }
 }
 
@@ -331,7 +331,6 @@
 // -------
 
 .opacity(@opacity) {
-    filter: progid:DXImageTransform.Microsoft.Alpha(opacity = (@opacity * 100));
     -moz-opacity: @opacity;
     opacity: @opacity;
 }
