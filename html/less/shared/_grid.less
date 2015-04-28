@@ -93,6 +93,10 @@
         width: 100% / @columns * @index;
     }
 
+    .push--@{index}of@{columns} {
+        margin-left: 100% / @columns * @index;
+    }
+
     // next iteration
     .createColumn(@index - 1);
 }
@@ -101,6 +105,10 @@
     // create class
     .col--@{index}of@{columns}@{media} {
         width: 100% / @columns * @index;
+    }
+
+    .push--@{index}of@{columns}@{media} {
+        margin-left: 100% / @columns * @index;
     }
 
     // next iteration
