@@ -3,53 +3,158 @@
 //  Primer
 //  https://github.com/j4cq/primer
 //
-//  Copyright (c) 2015 Jacqueline Wheeler. All rights reserved.
+//  Copyright (c) 2017 Jacqueline Wheeler. All rights reserved.
 //  Licensed under MIT.
 */
 
 .input,
+.textarea,
 .select,
-.textarea {
+select {
     display: block;
     outline: none;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    height: 50px;
+    height: 3.125em;
     width: 100%;
     margin: 0 0 @spacing;
     padding: 0 @spacing * 2;
-    background: #fff;
+    background: @grey-lightest no-repeat right center;
     .border-radius(0);
     border: none;
     font-family: inherit;
     font-weight: inherit;
     font-size: inherit;
-    line-height: inherit;
-    color: @grey;
+    line-height: 1.3;
+    color: @dark;
+
+    &.compact {
+        padding-left: @spacing;
+        padding-right: @spacing;
+    }
+
+    &:disabled {
+        opacity: 0.3;
+        cursor: default !important;
+    }
+
+    .background--grey-lightest & {
+        background-color: @light;
+    }
+
+    .input__wrapper--dark & {
+        background-color: @dark;
+        color: @light;
+    }
+}
+
+:-webkit-autofill {
+    .box-shadow(inset 0 100px 0 @grey-lightest);
 }
 
 .textarea {
-    height: 100px;
-    padding-top: @spacing;
-    padding-bottom: @spacing;
+    height: calc(~"6.25em + 10px");
+    padding-top: 0.75em;
+    padding-bottom: 0.75em;
     resize: none;
 }
 
-.select {
+.select,
+select {
     cursor: pointer;
-    background-image: url('../img/select-arrow.png');
-    background-repeat: no-repeat;
-    background-position: right center;
+    background-image: url('../images/select-arrow.png');
     background-size: auto 100%;
-    padding-right: @spacing * 3;
+    padding-right: @spacing * 3.5 !important;
+
+    .input__wrapper--dark & {
+        background-image: url('../images/select-arrow-light.png');
+    }
+
+    &.multiselect {
+        height: 90px;
+        background-image: none;
+        padding: 0;
+
+        option {
+            padding: 5px @spacing * 2;
+        }
+    }
 }
 
+
+// sizes
+
+.input--xsml {
+    font-size: 0.6em;
+}
+
+.input--sml {
+    font-size: 0.8em;
+}
+
+.input--med {
+    font-size: 1.2em;
+}
+
+.input--lge {
+    font-size: 1.4em;
+}
+
+
+// colors
+
+.input--transparent {
+    background-color: transparent !important;
+    color: inherit;
+}
+
+.input--light {
+    background-color: @light !important;
+}
+
+.input--outline {
+    border: 0.144em solid;
+    background-color: rgba(0,0,0,0);
+    color: inherit;
+
+
+    &::-webkit-input-placeholder { color: inherit; }
+
+    &:-moz-placeholder { color: inherit; }
+
+    &::-moz-placeholder { color: inherit; }
+
+    &:-ms-input-placeholder { color: inherit; }
+}
+
+
+// labels
+
+.label {
+    display: block;
+    text-align: left;
+    text-transform: uppercase;
+    margin-bottom: @spacing / 2;
+}
+
+.validation {
+    margin: 0 0 @spacing;
+    font-size: 0.9em;
+    color: @error;
+}
+
+
 // placeholders
-::-webkit-input-placeholder { color: @grey; }
 
-:-moz-placeholder { color: @grey; }
+.placeholder() {
+    color: rgba(0,0,0,0.3);
+}
 
-::-moz-placeholder { color: @grey; }
+::-webkit-input-placeholder { .placeholder(); }
 
-:-ms-input-placeholder { color: @grey; }
+:-moz-placeholder { .placeholder(); }
+
+::-moz-placeholder { .placeholder(); }
+
+:-ms-input-placeholder { .placeholder(); }

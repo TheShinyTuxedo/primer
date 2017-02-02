@@ -1,0 +1,38 @@
+/*
+//  badges.less
+//  Primer
+//  https://github.com/j4cq/primer
+//
+//  Copyright (c) 2017 Jacqueline Wheeler. All rights reserved.
+//  Licensed under MIT.
+*/
+
+[data-badge] {
+    position: relative;
+
+    &:after {
+        content: attr(data-badge);
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 18px;
+        height: 18px;
+        line-height: 18px;
+        background: @dark;
+        padding: 0;
+        .border-radius(18px);
+        font-size: 10px;
+        font-weight: @bold-weight;
+        letter-spacing: 0;
+        color: @light;
+        text-align: center;
+    }
+}
+
+[data-badge=""],
+[data-badge="0"] {
+    &:after {
+        display: none !important;
+    }
+}

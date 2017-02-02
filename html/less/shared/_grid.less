@@ -3,91 +3,99 @@
 //  Primer
 //  https://github.com/j4cq/primer
 //
-//  Copyright (c) 2015 Jacqueline Wheeler. All rights reserved.
+//  Copyright (c) 2017 Jacqueline Wheeler. All rights reserved.
 //  Licensed under MIT.
 */
 
-@columns: 12;
-
 .row {
     .cf;
-    margin-left: -@spacing / 2;
-    margin-right: -@spacing / 2;
+    display: block;
+    margin-left: -@spacing;
+    margin-right: -@spacing;
 }
 
 .col {
     float: left;
     width: 100%;
-    padding-left: @spacing / 2;
-    padding-right: @spacing / 2;
-}
+    padding-left: @spacing;
+    padding-right: @spacing;
+    min-height: 1px;
 
-.row--med {
-    margin-left: -@spacing;
-    margin-right: -@spacing;
-
-    .col {
-        padding-left: @spacing;
-        padding-right: @spacing;
+    .row--inline-block > & {
+        display: inline-block;
+        float: none;
+        vertical-align: top;
+        margin-left: -3px;
+        margin-right: -3px;
     }
 }
 
-.row--lge {
+.row--hairline {
+    margin-left: -1px;
+    margin-right: -1px;
+    border-left: 1px solid transparent;
+
+    > .col {
+        padding-left: 0;
+        padding-right: 0;
+        border-right: 1px solid transparent;
+    }
+}
+
+.row--sml {
+    margin-left: -@spacing / 2;
+    margin-right: -@spacing / 2;
+
+    > .col {
+        padding-left: @spacing / 2;
+        padding-right: @spacing / 2;
+    }
+}
+
+.row--med {
     margin-left: -@spacing * 2;
     margin-right: -@spacing * 2;
 
-    .col {
+    > .col {
         padding-left: @spacing * 2;
         padding-right: @spacing * 2;
     }
 }
 
-.row--flush {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+.row--lge {
+    margin-left: -@spacing * 3;
+    margin-right: -@spacing * 3;
 
-    .col {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
+    > .col {
+        padding-left: @spacing * 3;
+        padding-right: @spacing * 3;
     }
 }
 
-.media-medium() {
-    .row {
-        margin-left: -@spacing;
-        margin-right: -@spacing;
+.row--xlge {
+    margin-left: -@spacing * 4;
+    margin-right: -@spacing * 4;
+
+    > .col {
+        padding-left: @spacing * 4;
+        padding-right: @spacing * 4;
     }
+}
 
-    .col {
-        padding-left: @spacing;
-        padding-right: @spacing;
-    }
+.row--flush {
+    margin-left: 0;
+    margin-right: 0;
 
-    .row--med {
-        margin-left: -@spacing * 2;
-        margin-right: -@spacing * 2;
-
-        .col {
-            padding-left: @spacing * 2;
-            padding-right: @spacing * 2;
-        }
-    }
-
-    .row--lge {
-        margin-left: -@spacing * 3;
-        margin-right: -@spacing * 3;
-
-        .col {
-            padding-left: @spacing * 3;
-            padding-right: @spacing * 3;
-        }
+    > .col {
+        padding-left: 0;
+        padding-right: 0;
     }
 }
 
 
 // column generators
 
-.createColumn(@index) when (@index > 0) {
+.createColumn(@index, @columns) when (@index >= 0) {
     // create class
     .col--@{index}of@{columns} {
         width: 100% / @columns * @index;
@@ -98,10 +106,10 @@
     }
 
     // next iteration
-    .createColumn(@index - 1);
+    .createColumn(@index - 1, @columns);
 }
 
-.createColumn(@index, @media) when (@index > 0) {
+.createColumn(@index, @columns, @media) when (@index >= 0) {
     // create class
     .col--@{index}of@{columns}@{media} {
         width: 100% / @columns * @index;
@@ -112,30 +120,91 @@
     }
 
     // next iteration
-    .createColumn(@index - 1, @media);
+    .createColumn(@index - 1, @columns, @media);
 }
 
-.createColumn(0) {}
+.createColumn(-1, @columns) {}
 
 // call looping mixin
-.createColumn(@columns);
+.createColumn(12, 12);
+.createColumn(10, 10);
 
 .media-small() {
-    .createColumn(@columns, -s);
+    .createColumn(12, 12, -s);
+    .createColumn(10, 10, -s);
 }
 
 .media-small-medium() {
-    .createColumn(@columns, -sm);
+    .createColumn(12, 12, -sm);
+    .createColumn(10, 10, -sm);
 }
 
 .media-medium() {
-    .createColumn(@columns, -m);
+    .createColumn(12, 12, -m);
+    .createColumn(10, 10, -m);
 }
 
 .media-medium-large() {
-    .createColumn(@columns, -ml);
+    .createColumn(12, 12, -ml);
+    .createColumn(10, 10, -ml);
 }
 
 .media-large() {
-    .createColumn(@columns, -l);
+    .createColumn(12, 12, -l);
+    .createColumn(10, 10, -l);
+}
+
+.media-extra-large() {
+    .createColumn(12, 12, -xl);
+    .createColumn(10, 10, -xl);
+}
+
+
+// table grid
+
+.row--table {
+    display: table !important;
+    width: 100%;
+
+    > .col {
+        display: table-cell !important;
+        float: none !important;
+        vertical-align: top;
+    }
+}
+
+.media-small() {
+    .row--table-s {
+        .row--table;
+    }
+}
+
+.media-small-medium() {
+    .row--table-sm {
+        .row--table;
+    }
+}
+
+.media-medium() {
+    .row--table-m {
+        .row--table;
+    }
+}
+
+.media-medium-large() {
+    .row--table-ml {
+        .row--table;
+    }
+}
+
+.media-large() {
+    .row--table-l {
+        .row--table;
+    }
+}
+
+.media-extra-large() {
+    .row--table-xl {
+        .row--table;
+    }
 }

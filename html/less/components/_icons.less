@@ -1,0 +1,113 @@
+/*
+//  icons.less
+//  Primer
+//  https://github.com/j4cq/primer
+//
+//  Copyright (c) 2017 Jacqueline Wheeler. All rights reserved.
+//  Licensed under MIT.
+*/
+
+// custom icons
+
+.icon {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    width: 1.25em;
+    height: 1.25em;
+    line-height: 1.25em;
+    margin: 0 auto;
+    text-align: center;
+
+    span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        display: block;
+        width: 1.09em;
+        height: 0;
+        margin: -0.0625em 0 0 -1.09em / 2;
+        border-top: 0.175em solid;
+        .transition(all 0.15s ease);
+    }
+}
+
+
+// sizes
+
+.icon--sml {
+    font-size: 0.8em;
+}
+
+
+// icon types
+
+.icon--plus {
+    span {
+        &:first-child {
+            .rotate(0);
+        }
+
+        .active & {
+            &:first-child {
+                .rotate(90deg);
+            }
+        }
+    }
+}
+
+.icon--cancel {
+    span {
+        &:nth-child(1) {
+            .rotate(45deg);
+        }
+
+        &:nth-child(2) {
+            .rotate(-45deg);
+        }
+    }
+
+    &:hover,
+    .button:hover > & {
+        span {
+            width: 1.555em;
+            margin-left: -1.555em / 2;
+        }
+    }
+}
+
+.icon--menu {
+    span {
+        &:nth-child(1) {
+            .translate(0, -0.375em);
+        }
+
+        &:nth-child(3) {
+            .translate(0, 0.375em);
+        }
+    }
+
+    &:hover span,
+    .button:hover > & span {
+        &:nth-child(1) {
+            .translate(0, -0.45em);
+        }
+
+        &:nth-child(3) {
+            .translate(0, 0.45em);
+        }
+    }
+
+    .menu-active & {
+        span {
+            &:nth-child(1) {
+                .rotate(45deg) !important;
+            }
+
+            &:nth-child(2),
+            &:nth-child(3) {
+                .rotate(-45deg) !important;
+            }
+        }
+    }
+}

@@ -3,32 +3,194 @@
 //  Primer
 //  https://github.com/j4cq/primer
 //
-//  Copyright (c) 2015 Jacqueline Wheeler. All rights reserved.
+//  Copyright (c) 2017 Jacqueline Wheeler. All rights reserved.
 //  Licensed under MIT.
 */
 
 .button {
+    position: relative;
     display: inline-block;
     vertical-align: middle;
     margin: 0;
-    padding: @spacing @spacing * 2;
-    background: #fff;
+    padding: 0.938em 1.3em;
+    background-color: @dark;
     border: none;
     .border-radius(0);
     outline: none;
     .no-tap-highlight();
     -webkit-appearance: none;
     font-family: inherit;
+    font-size: inherit;
     font-weight: inherit;
-    line-height: inherit;
-    text-decoration: none;
-    color: inherit;
-    .font-smoothing;
+    line-height: 1.3;
+    text-decoration: none !important;
+    text-transform: uppercase;
+    color: @light;
     text-align: center;
     cursor: pointer;
-    .transition(all 0.2s ease);
+    .font-smoothing;
+    .transition(all 0.15s ease);
 
     &:hover {
-        background-color: #ccc;
+        background-color: @grey-light;
+        color: @dark;
     }
+
+    [class*="icon-"]:before {
+        margin: 0 !important;
+    }
+
+    img {
+        vertical-align: middle;
+    }
+
+    small {
+        font-size: 0.6em;
+        line-height: 1.3 / 0.6;
+    }
+}
+
+.button__label {
+    position: relative;
+    z-index: 1;
+}
+
+
+// colors
+
+.button--dark {
+    background-color: @dark;
+    color: @light;
+
+    &.button--outline {
+        color: @dark;
+    }
+}
+
+.button--grey {
+    background-color: @grey;
+    color: @light;
+
+    &.button--outline {
+        color: @grey;
+    }
+}
+
+.button--grey-mid {
+    background-color: @grey-mid;
+    color: @light;
+
+    &.button--outline {
+        color: @grey-mid;
+    }
+}
+
+.button--grey-light {
+    background-color: @grey-light;
+    color: @dark;
+
+    &:hover {
+        background-color: @grey-lightest;
+    }
+}
+
+.button--light {
+    background-color: @light;
+    color: @dark;
+
+    &.button--outline {
+        color: @light;
+    }
+}
+
+.button--unstyled {
+    background-color: transparent !important;
+    border: none !important;
+    .box-shadow(none) !important;
+    color: inherit;
+
+    &:hover {
+        color: @dark;
+    }
+
+    .modal & {
+        &:hover {
+            color: @grey-mid;
+        }
+    }
+}
+
+.button--outline {
+    background-color: transparent !important;
+    .box-shadow(none) !important;
+    border: 0.144em solid;
+    padding-top: 0.938em - 0.144;
+    padding-bottom: 0.938em - 0.144;
+}
+
+
+// sizes & styles
+
+.button--xsml {
+    font-size: 0.6em;
+}
+
+.button--sml {
+    font-size: 0.8em;
+}
+
+.button--med {
+    font-size: 1.2em;
+}
+
+.button--lge {
+    font-size: 1.4em;
+}
+
+.button--xlge {
+    font-size: 1.6em;
+}
+
+.button--block {
+    display: block;
+    width: 100%;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+}
+
+.button--compact {
+    padding-left: @spacing !important;
+    padding-right: @spacing !important;
+}
+
+.button--wide {
+    padding-left: 4em !important;
+    padding-right: 4em !important;
+}
+
+.button--flush {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.button--icon {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 3.125em;
+    white-space: nowrap;
+    letter-spacing: 0 !important;
+
+    &.button--outline {
+        width: 3.125em - 0.144;
+    }
+}
+
+.button--circled {
+    .border-radius(4em);
+}
+
+.button--disabled {
+    cursor: default;
+    pointer-events: none;
+    opacity: 0.3;
 }

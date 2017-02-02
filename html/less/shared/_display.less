@@ -3,7 +3,7 @@
 //  Primer
 //  https://github.com/j4cq/primer
 //
-//  Copyright (c) 2015 Jacqueline Wheeler. All rights reserved.
+//  Copyright (c) 2017 Jacqueline Wheeler. All rights reserved.
 //  Licensed under MIT.
 */
 
@@ -27,6 +27,14 @@
     display: block !important;
 }
 
+.show-inline {
+    display: inline !important;
+}
+
+.show-inline-block {
+    display: inline-block !important;
+}
+
 .hide {
     display: none !important;
 }
@@ -43,6 +51,22 @@
 
     .show-inline--@{media} {
         display: inline !important;
+    }
+
+    .show-inline-block--@{media} {
+        display: inline-block !important;
+    }
+
+    .show-table--@{media} {
+        display: table !important;
+    }
+
+    .show-tr--@{media} {
+        display: table-row !important;
+    }
+
+    .show-td--@{media} {
+        display: table-cell !important;
     }
 }
 

@@ -1,18 +1,5 @@
-/*
-//  utils.js
-//  Primer
-//  https://github.com/j4cq/primer
-//
-//  Copyright (c) 2015 Jacqueline Wheeler. All rights reserved.
-//  Licensed under MIT.
-*/
-
 var utils = (function ($) {
     var $window = $(window);
-
-    function isMobile() {
-        return $window.width() < (40 * 16) || /Android|webOS|iPhone|iPod|iPad|BlackBerry|IEMobile/i.test(navigator.userAgent);
-    }
 
     function createNodes(list) {
         var result = {};
@@ -22,6 +9,10 @@ var utils = (function ($) {
         }
 
         return result;
+    }
+
+    function isMobile() {
+        return $window.width() < (40 * 16) || /Android|webOS|iPhone|iPod|iPad|BlackBerry|IEMobile/i.test(navigator.userAgent);
     }
 
     return {

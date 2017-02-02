@@ -1,0 +1,24 @@
+/*
+//  preloader.less
+//  Primer
+//  https://github.com/j4cq/primer
+//
+//  Copyright (c) 2017 Jacqueline Wheeler. All rights reserved.
+//  Licensed under MIT.
+*/
+
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999999;
+    background: @light;
+    opacity: 1;
+    .transition(all 0.3s ease);
+}
+
+.preloader--complete {
+    opacity: 0;
+}

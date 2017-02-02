@@ -1,0 +1,71 @@
+/*
+//  modals.less
+//  Primer
+//  https://github.com/j4cq/primer
+//
+//  Copyright (c) 2017 Jacqueline Wheeler. All rights reserved.
+//  Licensed under MIT.
+*/
+
+.modal-open {
+    overflow: hidden;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999999;
+    width: 100%;
+    height: 100%;
+    display: none;
+    opacity: 0;
+    overflow: auto;
+    background-color: @overlay;
+    color: @light;
+    .transition(all 0.15s ease);
+}
+
+.modal--mid {
+    background-color: @overlay-mid;
+}
+
+.modal--light {
+    background-color: @overlay-light;
+    color: @dark;
+}
+
+.modal--active {
+    display: block;
+}
+
+.modal--visible {
+    opacity: 1;
+}
+
+.modal--persistent {
+    display: block !important;
+    opacity: 1 !important;
+}
+
+.modal__wrapper {
+    display: table;
+    width: 100%;
+    height: 100%;
+    min-width: @min-width;
+}
+
+.modal__inner {
+    position: relative;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.modal__close {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 999 !important;
+    margin: @spacing * 2;
+}

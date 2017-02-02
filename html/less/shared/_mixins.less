@@ -3,7 +3,7 @@
 //  Primer
 //  https://github.com/j4cq/primer
 //
-//  Copyright (c) 2015 Jacqueline Wheeler. All rights reserved.
+//  Copyright (c) 2017 Jacqueline Wheeler. All rights reserved.
 //  Licensed under MIT.
 */
 
@@ -39,6 +39,14 @@
     -moz-animation-fill-mode: @fill-mode;
     -o-animation-fill-mode: @fill-mode;
     animation-fill-mode: @fill-mode;
+}
+
+// [none, forwards, backwards, both]
+.animation-duration(@duration) {
+    -webkit-animation-duration: @duration;
+    -moz-animation-duration: @duration;
+    -o-animation-duration: @duration;
+    animation-duration: @duration;
 }
 
 // [ease, ease-in, ease-out, ease-in-out, linear, cubic-bezier(0.1, 0.7, 1.0, 0.1), step-start, step-stop, steps(4, end)]
@@ -160,6 +168,16 @@
 // --------
 
 .gradient {
+    .vertical(@start: #fff, @middle: #eee, @end: #ddd) {
+        background-color: average(@start, @end);
+        background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, @start), color-stop(50%, @middle), color-stop(100%, @end));
+        background-image: -webkit-linear-gradient(top, @start 0%, @middle 50%, @end 100%);
+        background-image: -moz-linear-gradient(top, @start 0%, @middle 50%, @end 100%);
+        background-image: -o-linear-gradient(top, @start 0%, @middle 50%, @end 100%);
+        background-image: -ms-linear-gradient(top, @start 0%, @middle 50%, @end 100%);
+        background-image: linear-gradient(to bottom, @start 0%, @middle 50%, @end 100%);
+    }
+
     .vertical(@start: #fff, @end: #ddd) {
         background-color: average(@start, @end);
         background-image: -webkit-gradient(linear, left top, left bottom, from(@start), to(@end));
@@ -204,11 +222,32 @@
 // transform
 // ---------
 
+.perspective(@perspective) {
+    -webkit-perspective: @perspective;
+    -moz-perspective: @perspective;
+    -o-perspective: @perspective;
+    perspective: @perspective;
+}
+
 .transform(@transform) {
     -webkit-transform: @transform;
     -moz-transform: @transform;
     -o-transform: @transform;
     transform: @transform;
+}
+
+.transform-origin(@origin) {
+    -webkit-transform-origin: @origin;
+    -moz-transform-origin: @origin;
+    -ms-transform-origin: @origin;
+    transform-origin: @origin;
+}
+
+.transform-style(@style) {
+    -webkit-transform-style: @style;
+    -moz-transform-style: @style;
+    -ms-transform-style: @style;
+    transform-style: @style;
 }
 
 .translate(@x: 0, @y: 0) {
